@@ -1,7 +1,8 @@
 import 'pixi'
 import 'p2'
 import Phaser from 'phaser'
-import GameState from './states/Game'
+import LoaderState from './states/LoaderState'
+import MainState from './states/MainState'
 import config from './config'
 
 class Game extends Phaser.Game {
@@ -13,9 +14,10 @@ class Game extends Phaser.Game {
 
     super(width, height, Phaser.CANVAS, 'content', null)
 
-    this.state.add('Game', GameState, false)
+    this.state.add('Loader', LoaderState, false)
+    this.state.add('Main', MainState, false)
 
-    this.state.start('Game')
+    this.state.start('Loader')
   }
 }
 
