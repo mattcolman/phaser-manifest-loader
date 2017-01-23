@@ -1,0 +1,43 @@
+<?xml version='1.0'?>
+   <font>
+       <info aa='1' size='28' smooth='1' stretchH='100' bold='0' padding='0,0,0,0' spacing='0,0' charset='' italic='0' unicode='0' face='Bebas Neue'/>
+       <common scaleW='128' packed='0' pages='1' lineHeight='28' scaleH='128' base='21'/>
+       <pages>
+            <page id='0' file='bebas_bold.png'/>
+       </pages>
+        <chars count='31'>
+            <char xadvance='4' x='16' chnl='0' yoffset='22' y='47' xoffset='0' id='32' page='0' height='0' width='0'/>
+            <char xadvance='14' x='105' chnl='0' yoffset='9' y='24' xoffset='1' id='45' page='0' height='6' width='8'/>
+            <char xadvance='6' x='114' chnl='0' yoffset='18' y='24' xoffset='2' id='46' page='0' height='6' width='6'/>
+            <char xadvance='12' x='35' chnl='0' yoffset='2' y='1' xoffset='1' id='65' page='0' height='22' width='14'/>
+            <char xadvance='12' x='85' chnl='0' yoffset='2' y='24' xoffset='2' id='66' page='0' height='22' width='12'/>
+            <char xadvance='11' x='33' chnl='0' yoffset='0' y='24' xoffset='1' id='67' page='0' height='24' width='12'/>
+            <char xadvance='12' x='72' chnl='0' yoffset='2' y='24' xoffset='2' id='68' page='0' height='22' width='12'/>
+            <char xadvance='11' x='59' chnl='0' yoffset='2' y='24' xoffset='2' id='69' page='0' height='22' width='12'/>
+            <char xadvance='10' x='46' chnl='0' yoffset='2' y='24' xoffset='2' id='70' page='0' height='22' width='12'/>
+            <char xadvance='11' x='20' chnl='0' yoffset='0' y='99' xoffset='1' id='71' page='0' height='24' width='12'/>
+            <char xadvance='12' x='33' chnl='0' yoffset='2' y='95' xoffset='2' id='72' page='0' height='22' width='12'/>
+            <char xadvance='6' x='98' chnl='0' yoffset='2' y='24' xoffset='2' id='73' page='0' height='22' width='6'/>
+            <char xadvance='8' x='115' chnl='0' yoffset='2' y='1' xoffset='1' id='74' page='0' height='22' width='8'/>
+            <char xadvance='12' x='20' chnl='0' yoffset='2' y='1' xoffset='2' id='75' page='0' height='22' width='14'/>
+            <char xadvance='10' x='33' chnl='0' yoffset='2' y='72' xoffset='2' id='76' page='0' height='22' width='12'/>
+            <char xadvance='16' x='1' chnl='0' yoffset='2' y='24' xoffset='2' id='77' page='0' height='22' width='16'/>
+            <char xadvance='12' x='33' chnl='0' yoffset='2' y='49' xoffset='2' id='78' page='0' height='22' width='12'/>
+            <char xadvance='12' x='20' chnl='0' yoffset='0' y='74' xoffset='1' id='79' page='0' height='24' width='12'/>
+            <char xadvance='11' x='102' chnl='0' yoffset='2' y='1' xoffset='2' id='80' page='0' height='22' width='12'/>
+            <char xadvance='12' x='20' chnl='0' yoffset='1' y='49' xoffset='1' id='81' page='0' height='24' width='12'/>
+            <char xadvance='12' x='89' chnl='0' yoffset='2' y='1' xoffset='2' id='82' page='0' height='22' width='12'/>
+            <char xadvance='11' x='20' chnl='0' yoffset='0' y='24' xoffset='1' id='83' page='0' height='24' width='12'/>
+            <char xadvance='10' x='76' chnl='0' yoffset='2' y='1' xoffset='1' id='84' page='0' height='22' width='12'/>
+            <char xadvance='12' x='63' chnl='0' yoffset='2' y='1' xoffset='1' id='85' page='0' height='22' width='12'/>
+            <char xadvance='12' x='1' chnl='0' yoffset='2' y='93' xoffset='1' id='86' page='0' height='22' width='14'/>
+            <char xadvance='16' x='1' chnl='0' yoffset='2' y='1' xoffset='1' id='87' page='0' height='22' width='18'/>
+            <char xadvance='13' x='1' chnl='0' yoffset='2' y='70' xoffset='1' id='88' page='0' height='22' width='14'/>
+            <char xadvance='12' x='1' chnl='0' yoffset='2' y='47' xoffset='1' id='89' page='0' height='22' width='14'/>
+            <char xadvance='11' x='50' chnl='0' yoffset='2' y='1' xoffset='1' id='90' page='0' height='22' width='12'/>
+            <char xadvance='6' x='33' chnl='0' yoffset='2' y='118' xoffset='2' id='39' page='0' height='8' width='6'/>
+            <char xadvance='14' x='1' chnl='0' yoffset='18' y='116' xoffset='2' id='8230' page='0' height='6' width='14'/>
+       </chars>
+       <kernings count="0">
+       </kernings>
+   </font>

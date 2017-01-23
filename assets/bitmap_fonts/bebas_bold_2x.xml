@@ -1,0 +1,59 @@
+<?xml version='1.0'?>
+   <font>
+       <info aa='1' size='56' smooth='1' stretchH='100' bold='0' padding='0,0,0,0' spacing='0,0' charset='' italic='0' unicode='0' face='Bebas Neue'/>
+       <common scaleW='256' packed='0' pages='1' lineHeight='57' scaleH='256' base='43'/>
+       <pages>
+            <page id='0' file='bebas_bold_2x.png'/>
+       </pages>
+        <chars count='31'>
+            <char xadvance='9' x='32' chnl='0' yoffset='43' y='46' xoffset='0' id='32' page='0' height='0' width='0'/>
+            <char xadvance='22' x='2' chnl='0' yoffset='20' y='236' xoffset='2' id='45' page='0' height='8' width='14'/>
+            <char xadvance='11' x='26' chnl='0' yoffset='37' y='150' xoffset='3' id='46' page='0' height='8' width='8'/>
+            <char xadvance='23' x='88' chnl='0' yoffset='3' y='2' xoffset='1' id='65' page='0' height='42' width='24'/>
+            <char xadvance='23' x='60' chnl='0' yoffset='3' y='178' xoffset='3' id='66' page='0' height='42' width='22'/>
+            <char xadvance='22' x='36' chnl='0' yoffset='1' y='184' xoffset='2' id='67' page='0' height='44' width='22'/>
+            <char xadvance='23' x='60' chnl='0' yoffset='3' y='134' xoffset='3' id='68' page='0' height='42' width='22'/>
+            <char xadvance='21' x='128' chnl='0' yoffset='3' y='46' xoffset='3' id='69' page='0' height='42' width='20'/>
+            <char xadvance='20' x='106' chnl='0' yoffset='3' y='46' xoffset='3' id='70' page='0' height='42' width='20'/>
+            <char xadvance='22' x='36' chnl='0' yoffset='1' y='138' xoffset='2' id='71' page='0' height='44' width='22'/>
+            <char xadvance='24' x='60' chnl='0' yoffset='3' y='90' xoffset='3' id='72' page='0' height='42' width='22'/>
+            <char xadvance='11' x='150' chnl='0' yoffset='3' y='46' xoffset='3' id='73' page='0' height='42' width='10'/>
+            <char xadvance='15' x='234' chnl='0' yoffset='3' y='2' xoffset='1' id='74' page='0' height='42' width='14'/>
+            <char xadvance='24' x='62' chnl='0' yoffset='3' y='2' xoffset='3' id='75' page='0' height='42' width='24'/>
+            <char xadvance='19' x='84' chnl='0' yoffset='3' y='46' xoffset='3' id='76' page='0' height='42' width='20'/>
+            <char xadvance='31' x='2' chnl='0' yoffset='3' y='46' xoffset='3' id='77' page='0' height='42' width='28'/>
+            <char xadvance='24' x='60' chnl='0' yoffset='3' y='46' xoffset='3' id='78' page='0' height='42' width='22'/>
+            <char xadvance='23' x='36' chnl='0' yoffset='1' y='92' xoffset='2' id='79' page='0' height='44' width='22'/>
+            <char xadvance='22' x='210' chnl='0' yoffset='3' y='2' xoffset='3' id='80' page='0' height='42' width='22'/>
+            <char xadvance='23' x='2' chnl='0' yoffset='1' y='134' xoffset='2' id='81' page='0' height='46' width='22'/>
+            <char xadvance='23' x='186' chnl='0' yoffset='3' y='2' xoffset='3' id='82' page='0' height='42' width='22'/>
+            <char xadvance='21' x='36' chnl='0' yoffset='1' y='46' xoffset='2' id='83' page='0' height='44' width='22'/>
+            <char xadvance='20' x='162' chnl='0' yoffset='3' y='2' xoffset='1' id='84' page='0' height='42' width='22'/>
+            <char xadvance='23' x='138' chnl='0' yoffset='3' y='2' xoffset='2' id='85' page='0' height='42' width='22'/>
+            <char xadvance='23' x='36' chnl='0' yoffset='3' y='2' xoffset='1' id='86' page='0' height='42' width='24'/>
+            <char xadvance='32' x='2' chnl='0' yoffset='3' y='2' xoffset='1' id='87' page='0' height='42' width='32'/>
+            <char xadvance='25' x='2' chnl='0' yoffset='3' y='90' xoffset='1' id='88' page='0' height='42' width='26'/>
+            <char xadvance='23' x='2' chnl='0' yoffset='3' y='182' xoffset='1' id='89' page='0' height='42' width='24'/>
+            <char xadvance='21' x='114' chnl='0' yoffset='3' y='2' xoffset='2' id='90' page='0' height='42' width='22'/>
+            <char xadvance='11' x='26' chnl='0' yoffset='3' y='134' xoffset='3' id='39' page='0' height='14' width='8'/>
+            <char xadvance='27' x='2' chnl='0' yoffset='37' y='226' xoffset='3' id='8230' page='0' height='8' width='26'/>
+       </chars>
+       <kernings count="16">
+            <kerning first="89" second="46" amount="-1"/>
+            <kerning first="46" second="84" amount="-1"/>
+            <kerning first="46" second="86" amount="-1"/>
+            <kerning first="46" second="89" amount="-1"/>
+            <kerning first="80" second="46" amount="-1"/>
+            <kerning first="89" second="8230" amount="-1"/>
+            <kerning first="86" second="8230" amount="-1"/>
+            <kerning first="84" second="46" amount="-1"/>
+            <kerning first="84" second="8230" amount="-1"/>
+            <kerning first="80" second="8230" amount="-1"/>
+            <kerning first="8230" second="84" amount="-1"/>
+            <kerning first="86" second="46" amount="-1"/>
+            <kerning first="8230" second="86" amount="-1"/>
+            <kerning first="8230" second="89" amount="-1"/>
+            <kerning first="70" second="8230" amount="-1"/>
+            <kerning first="70" second="46" amount="-1"/>
+       </kernings>
+   </font>
