@@ -1,5 +1,6 @@
 const Manifest = {
   animations: [
+    'creature1',
     'creature2'
   ],
   'bitmap_fonts': [
@@ -16,9 +17,9 @@ const Manifest = {
     'swoosh_short'
   ],
   'images': [
-    'red',
-    'green',
-    'blue'
+    'phaser_logo',
+    'webpack_logo',
+    'yellow_circle'
   ],
   fonts: [
     'bebas_neuebold'

@@ -57,8 +57,12 @@ class AssetLoader extends Phaser.Plugin {
 
   loadImage(key, assetPostfix) {
     console.log('loadImage', key)
-    let url = require(`../../assets/images/${key}${assetPostfix}.jpg`)
-    if (!url) url = require(`../../assets/images/${key}${assetPostfix}.png`)
+    let url;
+    try {
+      url = require(`../../assets/images/${key}${assetPostfix}.jpg`)
+    } catch (err) {
+      url = require(`../../assets/images/${key}${assetPostfix}.png`)
+    }
 
     this.game.load.image(key, url)
   }
