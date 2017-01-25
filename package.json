@@ -1,7 +1,7 @@
 {
   "name": "phaser-manifest-loader",
-  "version": "1.0.2",
-  "description": "",
+  "version": "1.0.3",
+  "description": "Easily load assets into your Phaser game using a simple manifest",
   "author": "matt colman <matt@mattcolman.com>",
   "main": "index.js",
   "scripts": {
