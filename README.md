@@ -79,6 +79,7 @@ The suffix is the 2nd parameter of the loadManifest method.
   - atlasJSONArray(png + json)
   - mp3
   - bitmapfonts(png + xml)
+  - web fonts
   - more to come
 - Webfonts are also built in so you don't have to mess around with logic like:
 ```
