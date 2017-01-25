@@ -5,6 +5,13 @@ import AssetLoader from './AssetLoader'
 class ManifestLoader extends Phaser.Plugin {
 
   init () {}
+
+  /**
+   * [loadManifest loads a manifest of assets]
+   * @param {Object} manifest
+   * @param {String} assetPostfix (optional) default = ''
+   * @return {Promise}
+   */
   loadManifest (manifest, assetPostfix = '') {
     return Promise.all([
       this._loadAssets(manifest, assetPostfix),
