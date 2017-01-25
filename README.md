@@ -56,6 +56,7 @@ resolve: {
 
 3. Code Example
 ```
+import ManifestLoader from 'phaser-manifest-loader'
 @note: Typically the manifest would live in it's own file, away from your game code.
 const manifest = {
   spritesheets: [
