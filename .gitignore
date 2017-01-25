@@ -4,3 +4,4 @@ dist/
 *.atlas
 *.fnt
 working/
+lib/
