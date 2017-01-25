@@ -80,6 +80,14 @@ The suffix is the 2nd parameter of the loadManifest method.
   - mp3
   - bitmapfonts(png + xml)
   - more to come
+- Webfonts are also built in so you don't have to mess around with logic like:
+```
+render() {
+  if (this.webfontsLoaded) {
+    this.game.state.start('main')
+  }
+}
+```
 
 ## Install
 `yarn add phaser-manifest-loader` OR
