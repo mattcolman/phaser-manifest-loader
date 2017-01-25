@@ -1,0 +1,22 @@
+<?xml version='1.0'?>
+   <font>
+       <info aa='1' size='89' smooth='1' stretchH='100' bold='0' padding='0,0,0,0' spacing='0,0' charset='' italic='0' unicode='0' face='Bradley Hand'/>
+       <common scaleW='192' packed='0' pages='1' lineHeight='113' scaleH='192' base='79'/>
+       <pages>
+            <page id='0' file='bitmapfont.png'/>
+       </pages>
+        <chars count='12'>
+            <char xadvance='23' x='46' chnl='0' yoffset='76' y='78' xoffset='0' id='32' page='0' height='0' width='0'/>
+            <char xadvance='39' x='2' chnl='0' yoffset='37' y='142' xoffset='3' id='111' page='0' height='46' width='38'/>
+            <char xadvance='48' x='2' chnl='0' yoffset='20' y='78' xoffset='5' id='104' page='0' height='62' width='42'/>
+            <char xadvance='30' x='132' chnl='0' yoffset='11' y='102' xoffset='5' id='105' page='0' height='70' width='30'/>
+            <char xadvance='44' x='52' chnl='0' yoffset='14' y='102' xoffset='5' id='98' page='0' height='68' width='38'/>
+            <char xadvance='32' x='92' chnl='0' yoffset='24' y='102' xoffset='-2' id='116' page='0' height='56' width='38'/>
+            <char xadvance='81' x='52' chnl='0' yoffset='36' y='2' xoffset='6' id='109' page='0' height='44' width='78'/>
+            <char xadvance='46' x='106' chnl='0' yoffset='33' y='48' xoffset='4' id='97' page='0' height='48' width='42'/>
+            <char xadvance='42' x='2' chnl='0' yoffset='35' y='2' xoffset='-4' id='112' page='0' height='74' width='48'/>
+            <char xadvance='34' x='150' chnl='0' yoffset='33' y='48' xoffset='3' id='101' page='0' height='52' width='34'/>
+            <char xadvance='43' x='52' chnl='0' yoffset='36' y='48' xoffset='-5' id='120' page='0' height='52' width='52'/>
+            <char xadvance='28' x='164' chnl='0' yoffset='26' y='102' xoffset='10' id='33' page='0' height='54' width='16'/>
+       </chars>
+   </font>

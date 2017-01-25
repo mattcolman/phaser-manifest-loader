@@ -1,10 +1,10 @@
 const Manifest = {
-  animations: [
+  spritesheets: [
     'creature1',
     'creature2'
   ],
   'bitmap_fonts': [
-    'bebas_bold'
+    'bitmapfont'
   ],
   'audio': [
     'blip',
@@ -21,9 +21,18 @@ const Manifest = {
     'webpack_logo',
     'yellow_circle'
   ],
-  fonts: [
-    'bebas_neuebold'
-  ]
+  fonts: {
+    custom: {
+      families: [
+        'bebas_neuebold'
+      ]
+    },
+    google: {
+      families: [
+        'Bangers'
+      ]
+    }
+  }
 }
 
 export default Manifest

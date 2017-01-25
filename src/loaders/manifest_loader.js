@@ -4,26 +4,24 @@ import AssetLoader from './asset_loader'
 
 class ManifestLoader extends Phaser.Plugin {
 
-  init() {}
+  init () {}
 
-  destroy() {
+  destroy () {
     super.destroy()
   }
 
-  loadManifest(manifest, assetPostfix = "") {
-    this.assetLoaderPromise = this._loadAssets(manifest, assetPostfix)
-    const webFontPromise    = this._loadWebFonts(manifest.fonts)
+  loadManifest (manifest, assetPostfix = '') {
     return Promise.all([
-      this.assetLoaderPromise,
-      webFontPromise
+      this._loadAssets(manifest, assetPostfix),
+      this._loadWebFonts(manifest.fonts)
     ])
   }
 
-  _loadAssets(manifest, assetPostfix) {
-    return new Promise((resolve)=> {
+  _loadAssets (manifest, assetPostfix) {
+    return new Promise((resolve) => {
       const assetLoader = this.game.plugins.add(AssetLoader)
       assetLoader.loadManifest(manifest, assetPostfix)
-      this.game.load.onLoadComplete.addOnce(()=> {
+      this.game.load.onLoadComplete.addOnce(() => {
         console.log('boom!')
         this.game.plugins.remove(assetLoader)
         resolve()
@@ -32,30 +30,15 @@ class ManifestLoader extends Phaser.Plugin {
     })
   }
 
-  _loadWebFonts(fonts) {
+  _loadWebFonts (fonts) {
     return new Promise((resolve) => {
-
-      const fontFamilies = fonts
-
-      console.log('load fontFamilies', fontFamilies);
-
-      // converted from FontSquirrel.com
-      WebFont.load({
-        // google: {
-        //   families: ['Droid Sans', 'Droid Serif']
-        // },
-        custom: {
-          families: fonts,
-        },
+      WebFont.load(Object.assign({}, fonts, {
         active: () => {
-          // this.game.time.events.add(Phaser.Timer.SECOND, this.fontLoadComplete, this)
-          console.log('fonts loaded!');
-          resolve(fontFamilies);
-        },
-
-      });
-    });
+          resolve()
+        }
+      }))
+    })
   }
 }
 
-export default ManifestLoader;
+export default ManifestLoader
