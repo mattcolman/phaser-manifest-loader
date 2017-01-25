@@ -1,15 +1,10 @@
-import WebFont from 'webfontloader';
-import Phaser from 'phaser';
-import AssetLoader from './asset_loader'
+import Phaser from 'phaser'
+import WebFont from 'webfontloader'
+import AssetLoader from './AssetLoader'
 
 class ManifestLoader extends Phaser.Plugin {
 
   init () {}
-
-  destroy () {
-    super.destroy()
-  }
-
   loadManifest (manifest, assetPostfix = '') {
     return Promise.all([
       this._loadAssets(manifest, assetPostfix),
@@ -22,7 +17,6 @@ class ManifestLoader extends Phaser.Plugin {
       const assetLoader = this.game.plugins.add(AssetLoader)
       assetLoader.loadManifest(manifest, assetPostfix)
       this.game.load.onLoadComplete.addOnce(() => {
-        console.log('boom!')
         this.game.plugins.remove(assetLoader)
         resolve()
       })

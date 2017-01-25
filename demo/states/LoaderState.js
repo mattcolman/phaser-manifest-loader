@@ -1,5 +1,5 @@
 import Phaser from 'phaser'
-import ManifestLoader from '../loaders/manifest_loader'
+import ManifestLoader from '../../src/ManifestLoader'
 import 'assets/fonts/bebas/stylesheet.css'
 import Manifest from '../Manifest'
 
