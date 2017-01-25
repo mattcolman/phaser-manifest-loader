@@ -1,7 +1,42 @@
 # Phaser Manifest Loader for use with Webpack
 
+##TL;DR
+Phaser Manifest Loader means you can load assets that have been compressed and fingerprinted by webpack as easily as this:
+```
+const manifest = {
+  spritesheets: [
+    'creature1',
+    'creature2'
+  ],
+  'bitmap_fonts': [
+    'bitmapfont'
+  ],
+  'audio': [
+    'blip'
+  ],
+  'images': [
+    'phaser_logo',
+    'webpack_logo'        
+  ],
+  fonts: {
+    custom: {
+      families: [
+        'bebas_neuebold'
+      ]
+    },
+    google: {
+      families: [
+        'Bangers'
+      ]
+    }
+  }
+}
+```
+
 ## The Problem
-Webpack is great, of course, but when you use webpack loaders your main state can end up looking like this:
+Webpack is great!
+Webpack loaders are great because they compress and fingerprint your assets for you. Without this you cannot change an image on production and guarantee your users will see the new image as it may be stuck in a user's browser cache.
+However, when you use webpack loaders your main state can end up looking like this:
 ```
 import creature1Image from '../assets/spritesheets/creature1.png'
 import creature1Json from '../assets/spritesheets/creature1.json'
@@ -15,11 +50,16 @@ preload() {
 }
 ```
 ...and before you even start writing your game code you already have 100 lines of code!
-Also I find if I want to quickly test an image or audio file it just takes too long to write this code.
+Also I always have to look up the Phaser docs to remember how to load assets...it takes time!
 
 ## The Solution
 *Phaser Manifest Loader* provides an easy way to load assets.
 After the initial setup, you just drop a new image into the images folder and add it to the manifest, or a new png / json combo into the spritesheets folder and add it to the manifest and the assets will appear in the cache ready for use in your game.
+
+## Who should use Phaser Manifest Loader?
+Anyone that uses Phaser and webpack may benefit from this.
+I think it will be particularly useful for teams of developers as it provides convention and simplicity to asset loading.
+It will be very easy for example to explain to new junior developers how to load in assets. 1. Drop your asset into the appropriate folder. 1. Include it in the manifest. Easy! Rather than explaining how webpack works and referring them to both the webpack and phaser docs.
 
 ## Features
 - supports scaling variants for multi resolutions.
@@ -58,7 +98,14 @@ resolve: {
 3. Code Example
 ```
 import ManifestLoader from 'phaser-manifest-loader'
-@note: Typically the manifest would live in it's own file, away from your game code.
+import manifest from './manifest' // see manifest example below
+preload() {
+  this.game.plugins.add(ManifestLoader).loadManifest(manifest)
+}
+```
+
+## Manifest Example
+```
 const manifest = {
   spritesheets: [
     'creature1',
@@ -87,10 +134,7 @@ const manifest = {
     }
   }
 }
-
-preload() {
-  this.game.plugins.add(ManifestLoader).loadManifest(manifest)
-}
+export default manifest
 ```
 
 ## Run demo
