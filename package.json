@@ -1,6 +1,6 @@
 {
   "name": "ManifestLoader",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "description": "",
   "author": "matt colman <matt@mattcolman.com>",
   "main": "index.js",
