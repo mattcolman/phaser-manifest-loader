@@ -94,15 +94,15 @@ render() {
 `yarn add phaser-manifest-loader` OR
 `npm i phaser-manifest-loader --save`
 
-## Usage
-1. First create an assets directory with subdirectories:
-- images
-- spritesheets
-- audio
-- fonts
-- bitmap_fonts
+## Setup
+###1. First create an assets directory with subdirectories:
+  - images
+  - spritesheets
+  - audio
+  - fonts
+  - bitmap_fonts
 
-2. Specify where your assets live in your webpack config.
+###2. Specify where your assets live in your webpack config.
 e.g.
 ```
 resolve: {
@@ -112,7 +112,7 @@ resolve: {
 }
 ```
 
-3. Code Example
+## Usage
 ```
 import ManifestLoader from 'phaser-manifest-loader'
 import manifest from './manifest' // see manifest example below
