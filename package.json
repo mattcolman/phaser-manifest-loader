@@ -1,6 +1,6 @@
 {
-  "name": "ManifestLoader",
-  "version": "1.0.1",
+  "name": "phaser-manifest-loader",
+  "version": "1.0.2",
   "description": "",
   "author": "matt colman <matt@mattcolman.com>",
   "main": "index.js",
