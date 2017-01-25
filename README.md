@@ -1,5 +1,7 @@
 # Phaser Manifest Loader for use with Webpack
 
+![PhaserManifestLoader](https://raw.githubusercontent.com/mattcolman/phaser-manifest-loader/master/assets/images/phaser-manifest-loader.jpg)
+
 ##TL;DR
 Phaser Manifest Loader means you can load assets that have been compressed and fingerprinted by webpack as easily as this:
 ```
@@ -59,12 +61,12 @@ After the initial setup, you just drop a new image into the images folder and ad
 ## Who should use Phaser Manifest Loader?
 Anyone that uses Phaser and webpack may benefit from this.
 I think it will be particularly useful for teams of developers as it provides convention and simplicity to asset loading.
-It will be very easy for example to explain to new junior developers how to load in assets. 
+It will be very easy for example to explain to new junior developers how to load in assets.
 ```
-1. Drop your asset into the appropriate folder. 
-2. Include it in the manifest. 
+1. Drop your asset into the appropriate folder.
+2. Include it in the manifest.
 ```
-Easy! 
+Easy!
 Rather than explaining how webpack works and referring them to both the webpack and phaser docs.
 
 ## Features
