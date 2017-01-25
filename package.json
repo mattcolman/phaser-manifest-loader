@@ -5,10 +5,11 @@
   "author": "matt colman <matt@mattcolman.com>",
   "main": "index.js",
   "scripts": {
-    "start": "npm run run-demos",
+    "start": "npm run run-demo",
     "compile": "babel --presets es2015 -d lib/ src/",
     "prepublish": "npm run compile",
-    "run-demos": "webpack --config webpack.demo.config.js"
+    "run-demo": "export NODE_ENV=development && webpack",
+    "build-demo": "export NODE_ENV=production && webpack -p"
   },
   "license": "MIT",
   "devDependencies": {

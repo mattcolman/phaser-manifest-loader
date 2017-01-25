@@ -34,6 +34,7 @@ The suffix is the 2nd parameter of the loadManifest method.
   - more to come
 
 ## Install
+`yarn add phaser-manifest-loader` OR
 `npm i phaser-manifest-loader --save`
 
 ## Usage
@@ -94,6 +95,9 @@ preload() {
 
 ## Run demo
 `npm start`
+
+## Build demo
+`npm run build-demo`
 
 ### Credits
 https://github.com/lean/phaser-es6-webpack

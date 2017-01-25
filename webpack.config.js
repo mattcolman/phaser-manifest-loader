@@ -8,9 +8,8 @@ var phaser = path.join(phaserModule, 'build/custom/phaser-split.js')
 var pixi = path.join(phaserModule, 'build/custom/pixi.js')
 var p2 = path.join(phaserModule, 'build/custom/p2.js')
 
-var definePlugin = new webpack.DefinePlugin({
-  __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'true'))
-})
+const isProd = process.env.NODE_ENV === 'production'
+console.log('isProd', isProd)
 
 module.exports = {
   entry: {
@@ -27,24 +26,24 @@ module.exports = {
     publicPath: './dist/',
     filename: 'bundle.js'
   },
-  watch: true,
+  watch: !isProd,
   plugins: [
-    definePlugin,
     new webpack.optimize.CommonsChunkPlugin({ name: 'vendor'/* chunkName= */, filename: 'vendor.bundle.js'/* filename= */ }),
+    new webpack.ProvidePlugin({
+      Promise: 'imports-loader?this=>global!exports-loader?global.Promise!es6-promise'
+    })
+  ].concat(!isProd ? [
     new BrowserSyncPlugin({
       host: process.env.IP || 'localhost',
       port: process.env.PORT || 3000,
       server: {
         baseDir: ['./']
       }
-    }),
-    new webpack.ProvidePlugin({
-      Promise: 'imports-loader?this=>global!exports-loader?global.Promise!es6-promise'
     })
-  ],
+  ] : []),
   module: {
     rules: [
-      { test: /\.js$/, use: ['babel-loader'], include: path.join(__dirname, 'src') },
+      { test: /\.js$/, use: ['babel-loader'], include: [path.join(__dirname, 'src'), path.join(__dirname, 'demo')] },
       { test: /pixi\.js/, use: ['expose-loader?PIXI'] },
       { test: /phaser-split\.js$/, use: ['expose-loader?Phaser'] },
       { test: /p2\.js/, use: ['expose-loader?p2'] },
