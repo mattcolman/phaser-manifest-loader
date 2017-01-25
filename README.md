@@ -59,7 +59,13 @@ After the initial setup, you just drop a new image into the images folder and ad
 ## Who should use Phaser Manifest Loader?
 Anyone that uses Phaser and webpack may benefit from this.
 I think it will be particularly useful for teams of developers as it provides convention and simplicity to asset loading.
-It will be very easy for example to explain to new junior developers how to load in assets. 1. Drop your asset into the appropriate folder. 1. Include it in the manifest. Easy! Rather than explaining how webpack works and referring them to both the webpack and phaser docs.
+It will be very easy for example to explain to new junior developers how to load in assets. 
+```
+1. Drop your asset into the appropriate folder. 
+2. Include it in the manifest. 
+```
+Easy! 
+Rather than explaining how webpack works and referring them to both the webpack and phaser docs.
 
 ## Features
 - supports scaling variants for multi resolutions.
