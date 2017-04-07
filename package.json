@@ -3,7 +3,7 @@
   "version": "1.0.3",
   "description": "Easily load assets into your Phaser game using a simple manifest",
   "author": "matt colman <matt@mattcolman.com>",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "start": "npm run run-demo",
     "compile": "babel --presets es2015 -d lib/ src/",
