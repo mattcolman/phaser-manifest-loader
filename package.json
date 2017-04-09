@@ -33,10 +33,10 @@
     "imports-loader": "^0.7.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "^2.2.0"
+    "webpack": "^2.2.0",
+    "phaser-ce": "^2.7.3"
   },
   "dependencies": {
-    "phaser-ce": "^2.7.3",
     "webfontloader": "^1.6.27"
   }
 }
