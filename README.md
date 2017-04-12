@@ -2,7 +2,7 @@
 
 ![PhaserManifestLoader](https://raw.githubusercontent.com/mattcolman/phaser-manifest-loader/master/assets/images/phaser-manifest-loader.jpg)
 
-##TL;DR
+## TL;DR
 Phaser Manifest Loader means you can load assets that have been compressed and fingerprinted by webpack as easily as this:
 ```
 const manifest = {
