@@ -1,4 +1,4 @@
-import Phaser from 'phaser'
+import { Plugin } from 'phaser'
 import WebFont from 'webfontloader'
 import AssetLoader from './AssetLoader'
 
@@ -17,7 +17,7 @@ type Manifest = {
   },
 }
 
-class ManifestLoader extends Phaser.Plugin {
+class ManifestLoader extends Plugin {
 
   init () {}
 

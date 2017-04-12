@@ -1,6 +1,6 @@
-import Phaser from 'phaser'
+import { Plugin } from 'phaser'
 
-class AssetLoader extends Phaser.Plugin {
+class AssetLoader extends Plugin {
 
   init () {
     this.loaders = {
