@@ -112,12 +112,32 @@ resolve: {
 }
 ```
 
-## Usage
+## Simple Usage
 ```
 import ManifestLoader from 'phaser-manifest-loader'
 import manifest from './manifest' // see manifest example below
-preload() {
+
+// no webfonts in this manifest so we can simply use the preload method
+preload() {  
   this.game.plugins.add(ManifestLoader).loadManifest(manifest)
+}
+```
+
+## Advanced Usage (Webfonts)
+```
+import 'assets/fonts/bebas/stylesheet.css' // IMPORTANT remember to load your webfont stylesheet
+import ManifestLoader from 'phaser-manifest-loader'
+import manifest from './manifest' // see manifest example below
+
+// Load in a manifest of assets including web fonts
+// because webfonts don't use the Phaser loader we can't take advantage of Phaser's
+// preload method. So we performing loading in the create method and use the Promise
+// returned from `loadManifest`.
+create() {
+  const loader = this.game.plugins.add(ManifestLoader) // returns a Promise
+  loader.loadManifest(manifest).then(() => {
+    this.state.start('Main');
+  })
 }
 ```
 
@@ -153,6 +173,18 @@ const manifest = {
 }
 export default manifest
 ```
+
+## API
+### loadManifest
+
+[loadManifest loads a manifest of assets]
+
+**Parameters**
+
+-   `manifest` **Manifest**
+-   `assetPostfix` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)?**  (optional, default `.g`)
+
+Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)**
 
 ## Run demo
 `npm start`

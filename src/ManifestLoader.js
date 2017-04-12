@@ -2,17 +2,29 @@ import Phaser from 'phaser'
 import WebFont from 'webfontloader'
 import AssetLoader from './AssetLoader'
 
+type Manifest = {
+  spritesheets: Array<string>,
+  images: Array<string>,
+  audio: Array<string>,
+  bitmap_fonts: Array<string>,
+  fonts: {
+    custom: {
+      families: Array<string>,
+    },
+    google: {
+      families: Array<string>,
+    },
+  },
+}
+
 class ManifestLoader extends Phaser.Plugin {
 
   init () {}
 
   /**
    * [loadManifest loads a manifest of assets]
-   * @param {Object} manifest
-   * @param {String} assetPostfix (optional) default = ''
-   * @return {Promise}
    */
-  loadManifest (manifest, assetPostfix = '') {
+  loadManifest (manifest: Manifest, assetPostfix: string = ''): Promise {
     return Promise.all([
       this._loadAssets(manifest, assetPostfix),
       this._loadWebFonts(manifest.fonts)
@@ -33,11 +45,15 @@ class ManifestLoader extends Phaser.Plugin {
 
   _loadWebFonts (fonts) {
     return new Promise((resolve) => {
-      WebFont.load(Object.assign({}, fonts, {
-        active: () => {
-          resolve()
-        }
-      }))
+      if (!fonts) {
+        resolve()
+      } else {
+        WebFont.load(Object.assign({}, fonts, {
+          active: () => {
+            resolve()
+          }
+        }))
+      }
     })
   }
 }
