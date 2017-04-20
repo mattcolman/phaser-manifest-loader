@@ -102,39 +102,36 @@ render() {
   - fonts
   - bitmap_fonts
 
-2. Specify where your assets live in your webpack config.
-e.g.
-```
-resolve: {
-  alias: {    
-    assets: path.join(__dirname, 'assets')
-  }
-}
-```
 
 ## Simple Usage
 ```
 import ManifestLoader from 'phaser-manifest-loader'
 import manifest from './manifest' // see manifest example below
 
+// tell webpack where your assets directory is using require.context
+const req = require.context('../assets');
+
 // no webfonts in this manifest so we can simply use the preload method
 preload() {  
-  this.game.plugins.add(ManifestLoader).loadManifest(manifest)
+  this.game.plugins.add(ManifestLoader, req).loadManifest(manifest)
 }
 ```
 
 ## Advanced Usage (Webfonts)
 ```
-import 'assets/fonts/bebas/stylesheet.css' // IMPORTANT remember to load your webfont stylesheet
+import '../assets/fonts/bebas/stylesheet.css' // IMPORTANT remember to load your webfont stylesheet
 import ManifestLoader from 'phaser-manifest-loader'
 import manifest from './manifest' // see manifest example below
+
+// a more advanced way to use require.context
+const req = require.context('../assets', true, /.*\.png|json|ttf|woff|woff2|xml|mp3|jpg|jpeg$/);
 
 // Load in a manifest of assets including web fonts
 // because webfonts don't use the Phaser loader we can't take advantage of Phaser's
 // preload method. So we performing loading in the create method and use the Promise
 // returned from `loadManifest`.
 create() {
-  const loader = this.game.plugins.add(ManifestLoader) // returns a Promise
+  const loader = this.game.plugins.add(ManifestLoader, req)
   loader.loadManifest(manifest).then(() => {
     this.state.start('Main');
   })
@@ -181,10 +178,10 @@ export default manifest
 
 **Parameters**
 
--   `manifest` **{spritesheets: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>, images: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>, audio: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>, bitmap_fonts: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>, fonts: {custom: {families: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>}, google: {families: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>}}}** 
+-   `manifest` **{spritesheets: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>, images: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>, audio: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>, bitmap_fonts: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>, fonts: {custom: {families: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>}, google: {families: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>}}}**
 -   `assetPostfix` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)?**  (optional, default `''`)
 
-Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)** 
+Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)**
 
 ## Run demo
 `npm start`
