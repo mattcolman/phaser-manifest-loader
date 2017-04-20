@@ -2,7 +2,8 @@ import { Plugin } from 'phaser'
 
 class AssetLoader extends Plugin {
 
-  init () {
+  init (req) {
+    this.req = req
     this.loaders = {
       'audio': this.loadAudio,
       'spritesheets': this.loadSpriteSheet,
@@ -27,30 +28,29 @@ class AssetLoader extends Plugin {
   }
 
   loadAudio (key) {
-    const url = require(`assets/audio/${key}.mp3`)
+    const url = this.req(`./audio/${key}.mp3`)
     this.game.load.audio(key, url)
   }
 
   loadSpriteSheet (key, assetPostfix) {
-    const imageUrl = require(`assets/spritesheets/${key}${assetPostfix}.png`)
-    const jsonUrl = require(`assets/spritesheets/${key}${assetPostfix}.json`)
+    const imageUrl = this.req(`./spritesheets/${key}${assetPostfix}.png`)
+    const jsonUrl = this.req(`./spritesheets/${key}${assetPostfix}.json`)
     this.game.load.atlasJSONArray(key, imageUrl, null, jsonUrl)
   }
 
   loadImage (key, assetPostfix) {
     let url
     try {
-      url = require(`assets/images/${key}${assetPostfix}.jpg`)
+      url = this.req(`./images/${key}${assetPostfix}.jpg`)
     } catch (err) {
-      url = require(`assets/images/${key}${assetPostfix}.png`)
+      url = this.req(`./images/${key}${assetPostfix}.png`)
     }
-
     this.game.load.image(key, url)
   }
 
   loadBitmapFont (key, assetPostfix) {
-    const imageUrl = require(`assets/bitmap_fonts/${key}${assetPostfix}.png`)
-    const xmlUrl = require(`assets/bitmap_fonts/${key}${assetPostfix}.xml`)
+    const imageUrl = this.req(`./bitmap_fonts/${key}${assetPostfix}.png`)
+    const xmlUrl = this.req(`./bitmap_fonts/${key}${assetPostfix}.xml`)
     this.game.load.bitmapFont(key, imageUrl, xmlUrl)
   }
 
