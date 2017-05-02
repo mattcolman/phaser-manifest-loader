@@ -1,6 +1,6 @@
 import { Plugin } from 'phaser'
 
-class AssetLoader extends Plugin {
+export default class AssetLoader extends Plugin {
 
   init (req) {
     this.req = req
@@ -17,13 +17,19 @@ class AssetLoader extends Plugin {
     super.destroy()
   }
 
-  loadManifest (manifest, assetPostfix) {
-    Object.keys(this.loaders).forEach((assetType) => {
-      const assets = manifest[assetType]
-      if (!assets) return
-      assets.forEach((assetKey) => {
-        this.loaders[assetType].call(this, assetKey, assetPostfix)
+  loadManifest (manifest, assetPostfix = '') {
+    return new Promise((resolve) => {
+      Object.keys(this.loaders).forEach((assetType) => {
+        const assets = manifest[assetType]
+        if (!assets) return
+        assets.forEach((assetKey) => {
+          this.loaders[assetType].call(this, assetKey, assetPostfix)
+        })
       })
+      this.game.load.onLoadComplete.addOnce(() => {
+        resolve()
+      })
+      this.game.load.start()
     })
   }
 
@@ -55,5 +61,3 @@ class AssetLoader extends Plugin {
   }
 
 }
-
-export default AssetLoader

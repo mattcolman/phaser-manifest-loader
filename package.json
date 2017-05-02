@@ -12,6 +12,12 @@
     "build-demo": "export NODE_ENV=production && webpack -p"
   },
   "license": "MIT",
+  "dependencies": {
+    "webfontloader": "^1.6.27"
+  },
+  "peerDependencies": {
+    "phaser-ce": "2.x"
+  },
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.21.0",
@@ -37,11 +43,5 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^2.2.0"
-  },
-  "dependencies": {
-    "webfontloader": "^1.6.27"
-  },
-  "peerDependencies": {
-    "phaser-ce": "2.x"
   }
 }

@@ -105,7 +105,8 @@ render() {
 
 ## Simple Usage
 ```
-import ManifestLoader from 'phaser-manifest-loader'
+import { AssetLoader } from 'phaser-manifest-loader' // AssetLoader has the same api as ManifestLoader is more lightweight because it doesn't include webfontloader
+
 import manifest from './manifest' // see manifest example below
 
 // tell webpack where your assets directory is using require.context
@@ -113,7 +114,7 @@ const req = require.context('../assets');
 
 // no webfonts in this manifest so we can simply use the preload method
 preload() {  
-  this.game.plugins.add(ManifestLoader, req).loadManifest(manifest)
+  this.game.plugins.add(AssetLoader, req).loadManifest(manifest)
 }
 ```
 

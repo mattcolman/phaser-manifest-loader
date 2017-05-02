@@ -41,12 +41,10 @@ class ManifestLoader extends Plugin {
   _loadAssets (manifest, assetPostfix) {
     return new Promise((resolve) => {
       const assetLoader = this.game.plugins.add(AssetLoader, this.req)
-      assetLoader.loadManifest(manifest, assetPostfix)
-      this.game.load.onLoadComplete.addOnce(() => {
+      assetLoader.loadManifest(manifest, assetPostfix).then(() => {
         this.game.plugins.remove(assetLoader)
         resolve()
-      })
-      this.game.load.start()
+      })      
     })
   }
 
