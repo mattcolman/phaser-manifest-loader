@@ -17,9 +17,16 @@ type Manifest = {
   },
 }
 
+type RequireContext = {
+  resolve: () => any,
+  keys: () => Array<string>,
+}
+
 class ManifestLoader extends Plugin {
 
-  init () {}
+  init (req: RequireContext) {
+    this.req = req;
+  }
 
   /**
    * [loadManifest loads a manifest of assets]
@@ -33,13 +40,11 @@ class ManifestLoader extends Plugin {
 
   _loadAssets (manifest, assetPostfix) {
     return new Promise((resolve) => {
-      const assetLoader = this.game.plugins.add(AssetLoader)
-      assetLoader.loadManifest(manifest, assetPostfix)
-      this.game.load.onLoadComplete.addOnce(() => {
+      const assetLoader = this.game.plugins.add(AssetLoader, this.req)
+      assetLoader.loadManifest(manifest, assetPostfix).then(() => {
         this.game.plugins.remove(assetLoader)
         resolve()
-      })
-      this.game.load.start()
+      })      
     })
   }
 

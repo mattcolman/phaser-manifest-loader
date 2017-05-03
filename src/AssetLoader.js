@@ -1,8 +1,13 @@
 import { Plugin } from 'phaser'
 
-class AssetLoader extends Plugin {
+function warn (type, key) {
+  console.warn(`phaser-manifest-loader: could not find ${type} with key : ${key}`)
+}
 
-  init () {
+export default class AssetLoader extends Plugin {
+
+  init (req) {
+    this.req = req
     this.loaders = {
       'audio': this.loadAudio,
       'spritesheets': this.loadSpriteSheet,
@@ -16,44 +21,84 @@ class AssetLoader extends Plugin {
     super.destroy()
   }
 
-  loadManifest (manifest, assetPostfix) {
-    Object.keys(this.loaders).forEach((assetType) => {
-      const assets = manifest[assetType]
-      if (!assets) return
-      assets.forEach((assetKey) => {
-        this.loaders[assetType].call(this, assetKey, assetPostfix)
+  loadManifest (manifest, assetPostfix = '') {
+    return new Promise((resolve) => {
+      Object.keys(this.loaders).forEach((assetType) => {
+        const assets = manifest[assetType]
+        if (!assets) return
+        assets.forEach((assetKey) => {
+          this.loaders[assetType].call(this, assetKey, assetPostfix)
+        })
       })
+      this.game.load.onLoadComplete.addOnce(() => {
+        resolve()
+      })
+      this.game.load.start()
     })
   }
 
   loadAudio (key) {
-    const url = require(`assets/audio/${key}.mp3`)
-    this.game.load.audio(key, url)
+    const urls = []
+    try {
+      urls.push(this.req(`./audio/${key}.mp3`))
+    } catch (e) {}
+
+    try {
+      urls.push(this.req(`./audio/${key}.ogg`))
+    } catch (e) {}
+
+    if (urls.length === 0) {
+      warn('audio', key)
+    } else {
+      this.game.load.audio(key, urls[0])
+    }
   }
 
   loadSpriteSheet (key, assetPostfix) {
-    const imageUrl = require(`assets/spritesheets/${key}${assetPostfix}.png`)
-    const jsonUrl = require(`assets/spritesheets/${key}${assetPostfix}.json`)
+    let imageUrl, jsonUrl
+    try {
+      imageUrl = this.req(`./spritesheets/${key}${assetPostfix}.png`)
+    } catch (e) {}
+
+    try {
+      jsonUrl = this.req(`./spritesheets/${key}${assetPostfix}.json`)
+    } catch (e) {}
+
+    if (!imageUrl) warn('spriteSheet image', key)
+    if (!jsonUrl) warn('spriteSheet json', key)
     this.game.load.atlasJSONArray(key, imageUrl, null, jsonUrl)
   }
 
   loadImage (key, assetPostfix) {
-    let url
+    const urls = []
     try {
-      url = require(`assets/images/${key}${assetPostfix}.jpg`)
-    } catch (err) {
-      url = require(`assets/images/${key}${assetPostfix}.png`)
-    }
+      urls.push(this.req(`./images/${key}${assetPostfix}.jpg`))
+    } catch (e) {}
 
-    this.game.load.image(key, url)
+    try {
+      urls.push(this.req(`./images/${key}${assetPostfix}.png`))
+    } catch (e) {}
+
+    if (urls.length === 0) {
+      warn('image', key)
+    } else {
+      this.game.load.image(key, urls[0])
+    }
   }
 
   loadBitmapFont (key, assetPostfix) {
-    const imageUrl = require(`assets/bitmap_fonts/${key}${assetPostfix}.png`)
-    const xmlUrl = require(`assets/bitmap_fonts/${key}${assetPostfix}.xml`)
+    let imageUrl, xmlUrl
+    try {
+      imageUrl = this.req(`./bitmap_fonts/${key}${assetPostfix}.png`)
+    } catch (e) {}
+
+    try {
+      xmlUrl = this.req(`./bitmap_fonts/${key}${assetPostfix}.xml`)
+    } catch (e) {}
+
+    if (!imageUrl) warn('bitmapFont image', key)
+    if (!xmlUrl) warn('bitmapFont xml', key)
     this.game.load.bitmapFont(key, imageUrl, xmlUrl)
   }
 
 }
-
-export default AssetLoader
