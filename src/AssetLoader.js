@@ -1,5 +1,9 @@
 import { Plugin } from 'phaser'
 
+function warn (type, key) {
+  console.warn(`phaser-manifest-loader: could not find ${type} with key : ${key}`)
+}
+
 export default class AssetLoader extends Plugin {
 
   init (req) {
@@ -34,29 +38,66 @@ export default class AssetLoader extends Plugin {
   }
 
   loadAudio (key) {
-    const url = this.req(`./audio/${key}.mp3`)
-    this.game.load.audio(key, url)
+    const urls = []
+    try {
+      urls.push(this.req(`./audio/${key}.mp3`))
+    } catch (e) {}
+
+    try {
+      urls.push(this.req(`./audio/${key}.ogg`))
+    } catch (e) {}
+
+    if (urls.length === 0) {
+      warn('audio', key)
+    } else {
+      this.game.load.audio(key, urls[0])
+    }
   }
 
   loadSpriteSheet (key, assetPostfix) {
-    const imageUrl = this.req(`./spritesheets/${key}${assetPostfix}.png`)
-    const jsonUrl = this.req(`./spritesheets/${key}${assetPostfix}.json`)
+    let imageUrl, jsonUrl
+    try {
+      imageUrl = this.req(`./spritesheets/${key}${assetPostfix}.png`)
+    } catch (e) {}
+
+    try {
+      jsonUrl = this.req(`./spritesheets/${key}${assetPostfix}.json`)
+    } catch (e) {}
+
+    if (!imageUrl) warn('spriteSheet image', key)
+    if (!jsonUrl) warn('spriteSheet json', key)
     this.game.load.atlasJSONArray(key, imageUrl, null, jsonUrl)
   }
 
   loadImage (key, assetPostfix) {
-    let url
+    const urls = []
     try {
-      url = this.req(`./images/${key}${assetPostfix}.jpg`)
-    } catch (err) {
-      url = this.req(`./images/${key}${assetPostfix}.png`)
+      urls.push(this.req(`./images/${key}${assetPostfix}.jpg`))
+    } catch (e) {}
+
+    try {
+      urls.push(this.req(`./images/${key}${assetPostfix}.png`))
+    } catch (e) {}
+
+    if (urls.length === 0) {
+      warn('image', key)
+    } else {
+      this.game.load.image(key, urls[0])
     }
-    this.game.load.image(key, url)
   }
 
   loadBitmapFont (key, assetPostfix) {
-    const imageUrl = this.req(`./bitmap_fonts/${key}${assetPostfix}.png`)
-    const xmlUrl = this.req(`./bitmap_fonts/${key}${assetPostfix}.xml`)
+    let imageUrl, xmlUrl
+    try {
+      imageUrl = this.req(`./bitmap_fonts/${key}${assetPostfix}.png`)
+    } catch (e) {}
+
+    try {
+      xmlUrl = this.req(`./bitmap_fonts/${key}${assetPostfix}.xml`)
+    } catch (e) {}
+
+    if (!imageUrl) warn('bitmapFont image', key)
+    if (!xmlUrl) warn('bitmapFont xml', key)
     this.game.load.bitmapFont(key, imageUrl, xmlUrl)
   }
 
