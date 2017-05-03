@@ -106,7 +106,8 @@ import ManifestLoader from 'phaser-manifest-loader'
 import manifest from './manifest' // see manifest example below
 
 // tell webpack where your assets directory is using require.context (https://webpack.github.io/docs/context.html)
-const req = require.context('../assets', true);
+// specify the filetypes so webpack doesn't try to load any other files inside the assets directory
+const req = require.context('../assets', true, /.*\.png|json|ttf|woff|woff2|xml|mp3|jpg$/);
 
 // no webfonts in this manifest so we can simply use the preload method
 // you can also import the light-weight AssetLoader which doesn't include webfontloader in the build
@@ -122,7 +123,8 @@ import '../assets/fonts/bebas/stylesheet.css' // IMPORTANT remember to load your
 import ManifestLoader from 'phaser-manifest-loader'
 import manifest from './manifest' // see manifest example below
 
-const req = require.context('../assets', true);
+// specify the filetypes so webpack doesn't try to load any other files inside the assets directory
+const req = require.context('../assets', true, /.*\.png|json|ttf|woff|woff2|xml|mp3|jpg$/);
 
 // Load in a manifest of assets including web fonts
 // because webfonts don't use the Phaser loader we can't take advantage of Phaser's
