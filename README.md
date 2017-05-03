@@ -177,7 +177,7 @@ Drop your image into the images folder and provide the name of the file (without
 Drop your audio into the audio folder and provide the name of the file (without the filetype) in the audio array of the manifest. It will auto-detect the filetype.
 
 ## Loading Fonts
-The font loader uses (Web Font Loader)[https://github.com/typekit/webfontloader]. Use their standard config object in your manifest.
+The font loader uses [Web Font Loader](https://github.com/typekit/webfontloader). Use their standard config object in your manifest.
 
 ## Loading Spritesheets and Texture Atlases
 Sprites and atlases use [atlasJSONArray](http://phaser.io/docs/2.6.2/Phaser.Loader.html#atlasJSONArray) type from Phaser. Make sure you name both the png and json file with the same name, then provide that name in the spritesheets array of the manifest.
