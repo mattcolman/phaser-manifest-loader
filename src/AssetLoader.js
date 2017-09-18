@@ -39,6 +39,15 @@ export default class AssetLoader extends Plugin {
 
   loadAudio (key) {
     const urls = []
+    
+    try {
+      urls.push(this.req(`./audio/${key}.wav`))
+    } catch (e) {}
+    
+    try {
+      urls.push(this.req(`./audio/${key}.m4a`))
+    } catch (e) {}
+    
     try {
       urls.push(this.req(`./audio/${key}.mp3`))
     } catch (e) {}
