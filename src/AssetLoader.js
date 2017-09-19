@@ -41,7 +41,11 @@ export default class AssetLoader extends Plugin {
     const urls = []
     
     try {
-      urls.push(this.req(`./audio/${key}.wav`))
+      urls.push(this.req(`./audio/${key}.mp3`))
+    } catch (e) {}
+    
+    try {
+      urls.push(this.req(`./audio/${key}.ogg`))
     } catch (e) {}
     
     try {
@@ -49,17 +53,13 @@ export default class AssetLoader extends Plugin {
     } catch (e) {}
     
     try {
-      urls.push(this.req(`./audio/${key}.mp3`))
+      urls.push(this.req(`./audio/${key}.wav`))
     } catch (e) {}
-
-    try {
-      urls.push(this.req(`./audio/${key}.ogg`))
-    } catch (e) {}
-
+    
     if (urls.length === 0) {
       warn('audio', key)
     } else {
-      this.game.load.audio(key, urls[0])
+      this.game.load.audio(key, urls)
     }
   }
 
