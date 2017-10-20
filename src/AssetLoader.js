@@ -39,23 +39,23 @@ export default class AssetLoader extends Plugin {
 
   loadAudio (key) {
     const urls = []
-    
+
     try {
       urls.push(this.req(`./audio/${key}.mp3`))
     } catch (e) {}
-    
+
     try {
       urls.push(this.req(`./audio/${key}.ogg`))
     } catch (e) {}
-    
+
     try {
       urls.push(this.req(`./audio/${key}.m4a`))
     } catch (e) {}
-    
+
     try {
       urls.push(this.req(`./audio/${key}.wav`))
     } catch (e) {}
-    
+
     if (urls.length === 0) {
       warn('audio', key)
     } else {
@@ -75,7 +75,7 @@ export default class AssetLoader extends Plugin {
 
     if (!imageUrl) warn('spriteSheet image', key)
     if (!jsonUrl) warn('spriteSheet json', key)
-    this.game.load.atlasJSONArray(key, imageUrl, null, jsonUrl)
+    this.game.load.atlasJSONArray(key, imageUrl, jsonUrl)
   }
 
   loadImage (key, assetPostfix) {

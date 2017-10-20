@@ -97,6 +97,64 @@ Create an assets directory with subdirectories for the asset types that you will
 /fonts (webfonts)
 /bitmap_fonts (png + xml)
 ```
+### Webpack config
+Expects all assets to be in the form of a url. The main gotcha is that webpack by default will bundle your spritesheet json files into the main bundle which is not what we want. So make sure you use file-loader for json files. Example config:
+```
+rules: [
+  {
+    test: /\.json$/,
+    use: 'file-loader',
+  },
+  {
+    test: /\.woff|\.woff2|\.svg|.eot|\.ttf/,
+    use: 'url-loader?prefix=font/&limit=10000&name=[name]-[hash].[ext]',
+  },
+  {
+    test: /\.mp3$/,
+    use: 'file-loader?hash=sha512&digest=hex&name=[name]-[hash].[ext]',
+  },
+  {
+    test: /\.(png)$/i,
+    use: [
+      {
+        loader: 'file-loader',
+        options: {
+          hash: 'sha512',
+          digest: 'hex',
+          name: '[name]-[hash].[ext]',
+        },
+      },
+      {
+        loader: 'image-webpack-loader',
+        options: {
+          progressive: true,
+          optipng: {
+            optimizationLevel: 7,
+          },
+          gifsicle: {
+            interlaced: false,
+          },
+        },
+      },
+    ],
+  },
+  {
+    test: /\.jpg$/,
+    use: [
+      {
+        loader: 'url-loader?hash=sha512&digest=hex&name=[name]-[hash].[ext]',
+        options: {
+          limit: 25000,
+        },
+      },
+    ],
+  },
+  {
+    test: /\.xml$/,
+    use: 'file-loader?hash=sha512&digest=hex&name=[name]-[hash].[ext]',
+  },
+]
+```
 
 ## Usage
 ### Basic
