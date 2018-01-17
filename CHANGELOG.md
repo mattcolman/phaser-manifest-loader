@@ -1,5 +1,9 @@
 # Change Log
 
+## 3.1.0
+- remove phaser webpack dependency (loading via script tag was broken!)
+- support both file-loader and json-loader for spritesheets
+
 ## 3.0.0
 - change loading of spritesheet json files to expect a json url rather than a json object. (This requires the use of [file-loader](https://github.com/webpack-contrib/file-loader) for json files in your webpack config)
 This change was made to support other libraries such as dragonbones. I also think it makes more sense to lazy load json files rather than include them in the main bundle (especially if you're using dragonbones!).
