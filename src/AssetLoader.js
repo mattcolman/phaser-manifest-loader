@@ -1,4 +1,3 @@
-import { Plugin } from 'phaser'
 import isString from 'lodash/isString'
 import isObject from 'lodash/isObject'
 
@@ -6,7 +5,7 @@ function warn (type, key) {
   console.warn(`phaser-manifest-loader: could not find ${type} with key : ${key}`)
 }
 
-export default class AssetLoader extends Plugin {
+export default class AssetLoader extends Phaser.Plugin {
 
   init (req) {
     this.req = req
