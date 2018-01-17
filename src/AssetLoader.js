@@ -1,10 +1,11 @@
-import { Plugin } from 'phaser'
+import isString from 'lodash/isString'
+import isObject from 'lodash/isObject'
 
 function warn (type, key) {
   console.warn(`phaser-manifest-loader: could not find ${type} with key : ${key}`)
 }
 
-export default class AssetLoader extends Plugin {
+export default class AssetLoader extends Phaser.Plugin {
 
   init (req) {
     this.req = req
@@ -64,18 +65,18 @@ export default class AssetLoader extends Plugin {
   }
 
   loadSpriteSheet (key, assetPostfix) {
-    let imageUrl, jsonUrl
+    let imageUrl, json
     try {
       imageUrl = this.req(`./spritesheets/${key}${assetPostfix}.png`)
     } catch (e) {}
 
     try {
-      jsonUrl = this.req(`./spritesheets/${key}${assetPostfix}.json`)
+      json = this.req(`./spritesheets/${key}${assetPostfix}.json`)
     } catch (e) {}
 
     if (!imageUrl) warn('spriteSheet image', key)
-    if (!jsonUrl) warn('spriteSheet json', key)
-    this.game.load.atlasJSONArray(key, imageUrl, jsonUrl)
+    if (!json) warn('spriteSheet json', key)
+    this.game.load.atlasJSONArray(key, imageUrl, isString(json) && json, isObject(json) && json)
   }
 
   loadImage (key, assetPostfix) {

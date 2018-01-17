@@ -1,4 +1,3 @@
-import { Plugin } from 'phaser'
 import WebFont from 'webfontloader'
 import AssetLoader from './AssetLoader'
 
@@ -22,7 +21,7 @@ type RequireContext = {
   keys: () => Array<string>,
 }
 
-class ManifestLoader extends Plugin {
+class ManifestLoader extends Phaser.Plugin {
 
   init (req: RequireContext) {
     this.req = req;
@@ -44,7 +43,7 @@ class ManifestLoader extends Plugin {
       assetLoader.loadManifest(manifest, assetPostfix).then(() => {
         this.game.plugins.remove(assetLoader)
         resolve()
-      })      
+      })
     })
   }
 
