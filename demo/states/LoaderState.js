@@ -9,7 +9,12 @@ export default class extends Phaser.State {
   }
 
   create () {
-    this.manifestLoader = this.game.plugins.add(ManifestLoader)
+    const req = require.context(
+      '../../assets',
+      true,
+      /.*\.png|json|ttf|woff|woff2|xml|mp3|jpg|jpeg$/
+    )
+    this.manifestLoader = this.game.plugins.add(ManifestLoader, req)
     // What I like about the ManifestLoader is that `loadManifest` returns
     // a promise, so we have more control over it.
     Promise.all([
@@ -22,9 +27,15 @@ export default class extends Phaser.State {
 
   startLoadingAnimation () {
     return new Promise((resolve, reject) => {
-      const spinner = this.add.image(this.world.centerX, this.world.centerY, 'loader')
+      const spinner = this.add.image(
+        this.world.centerX,
+        this.world.centerY,
+        'loader'
+      )
       spinner.anchor.set(0.5)
-      this.add.tween(spinner).to({angle: 360}, 1000, 'Linear', true, 0, -1, false)
+      this.add
+        .tween(spinner)
+        .to({ angle: 360 }, 1000, 'Linear', true, 0, -1, false)
       // If the assets are found in the browser cache they will probably load in < 1 second
       // typically causing a flash where the user sees the loading animation for a split second
       // Here we ensure the loading will be visible for at least 2 seconds so there is no flash
