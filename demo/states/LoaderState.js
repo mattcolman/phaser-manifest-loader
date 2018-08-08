@@ -12,7 +12,7 @@ export default class extends Phaser.State {
     const req = require.context(
       '../../assets',
       true,
-      /.*\.png|json|ttf|woff|woff2|xml|mp3|jpg|jpeg$/
+      /.*\.png|json|ttf|woff|woff2|xml|mp3|jpg|jpeg|json$/
     )
     this.manifestLoader = this.game.plugins.add(ManifestLoader, req)
     // What I like about the ManifestLoader is that `loadManifest` returns
