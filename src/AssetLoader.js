@@ -13,6 +13,7 @@ export default class AssetLoader extends Phaser.Plugin {
       'audio': this.loadAudio,
       'spritesheets': this.loadSpriteSheet,
       'images': this.loadImage,
+			'json': this.loadJson,
       'bitmap_fonts': this.loadBitmapFont
     }
   }
@@ -95,6 +96,19 @@ export default class AssetLoader extends Phaser.Plugin {
       this.game.load.image(key, urls[0])
     }
   }
+    
+loadJson (key, assetPostfix) {
+    const urls = []
+    try {
+        urls.push(this.req(`./json/${key}${assetPostfix}.json`))
+    } catch (e) {}
+
+    if (urls.length === 0) {
+        warn('json', key)
+    } else {
+        this.game.load.json(key, urls[0])
+    }
+}
 
   loadBitmapFont (key, assetPostfix) {
     let imageUrl, xmlUrl

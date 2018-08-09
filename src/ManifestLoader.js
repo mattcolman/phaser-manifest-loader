@@ -5,6 +5,7 @@ type Manifest = {
   spritesheets: Array<string>,
   images: Array<string>,
   audio: Array<string>,
+  json: Array<string>,
   bitmap_fonts: Array<string>,
   fonts: {
     custom: {
